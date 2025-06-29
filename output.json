@@ -1,0 +1,28 @@
+[
+  {
+    "host": "test.rebex.net",
+    "routing_table": [
+      {
+        "raw": "15: eth0: <> mtu 1500 group default qlen 1",
+        "type": "default"
+      },
+      {
+        "raw": "link/ether ab:76:f1:41:c4:7c"
+      },
+      {
+        "raw": "inet 194.108.117.16/24 brd 194.108.117.255 scope global dynamic"
+      },
+      {
+        "raw": "valid_lft forever preferred_lft forever"
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "eth0",
+        "addresses": [
+          "194.108.117.16/24"
+        ]
+      }
+    ]
+  }
+]
