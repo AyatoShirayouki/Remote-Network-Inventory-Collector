@@ -23,28 +23,30 @@ Once connected, it:
 
 ## Project Structure
 
+```plaintext
 RemoteNetworkInventoryCollector/
 ├── network_inventory_collector/
-│   ├── __init__.py        # Package version & metadata
-│   ├── main.py            # Entry point — CLI, threading, output
-│   ├── collector.py       # Orchestrates per-host SSH, commands, parsing
-│   ├── ssh_client.py      # Handles SSH connection & fallback logic
-│   ├── parser.py          # Parses `ip route` and `ip address` output (now robust to whitespace)
-│   ├── models.py          # Dataclass for structured JSON output
-│   ├── utils.py           # Helpers: file I/O, logger setup, retry decorator
-│   ├── config.py          # Global constants: timeouts, retries, commands, filters
-├── tests/                 # All unit tests with pytest
+│   ├── __init__.py         # Package version & metadata
+│   ├── main.py             # Entry point — CLI, threading, output
+│   ├── collector.py        # Orchestrates per-host SSH, commands, parsing
+│   ├── ssh_client.py       # Handles SSH connection & fallback logic
+│   ├── parser.py           # Parses `ip route` and `ip address` output (robust to whitespace)
+│   ├── models.py           # Dataclass for structured JSON output
+│   ├── utils.py            # Helpers: file I/O, logger setup, retry decorator
+│   ├── config.py           # Global constants: timeouts, retries, commands, filters
+├── tests/                  # All unit tests with pytest
 │   ├── test_collector.py
 │   ├── test_parser.py
 │   ├── test_ssh_client.py
 │   ├── test_utils.py
-├── hosts.txt              # List of hosts to connect to (one per line)
-├── credentials.txt        # List of credentials (username=password per line)
-├── output.json            # Optional JSON output file
-├── collector.log          # Log file with connection details & errors
-├── requirements.txt       # Production dependencies (e.g., paramiko)
-├── pytest.ini             # Pytest config: sets pythonpath for local tests
-├── venv/                  # Your virtual environment (should be gitignored)
+├── hosts.txt               # Input: list of hosts (one per line)
+├── credentials.txt         # Input: credentials (username=password)
+├── requirements.txt        # Python dependencies (paramiko, pytest)
+├── pytest.ini              # Pytest config for test discovery
+├── output.json             # (Optional) final JSON output file
+├── collector.log           # Log file with connection details and errors
+└── venv/                   # Your virtual environment (should be gitignored)
+```
 
 
 ## What each file does
@@ -116,6 +118,7 @@ __author__ = "Aleksandar Nestorov"
 
 Put your Python files into a project folder like this:
 
+```plaintext
 RemoteNetworkInventoryCollector/
 ├── network_inventory_collector/
 │   ├── __init__.py
@@ -138,6 +141,7 @@ RemoteNetworkInventoryCollector/
 ├── output.json            # (Optional) final JSON output file
 ├── collector.log          # Log file with connection details and errors
 └── venv/                  # Your virtual environment (should be gitignored)
+```
 
 
 ### 2. Create aor Activate a Virtual Environment
@@ -262,4 +266,10 @@ This project includes unit tests covering:
 [pytest]
 python_files = tests/test_*.py
 pythonpath = .
+```
+
+### 2. Run:
+```bash
+  pytest
+```
 
